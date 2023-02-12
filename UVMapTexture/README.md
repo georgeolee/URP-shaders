@@ -9,9 +9,9 @@ A shader for generating UV to \[*insert mesh attribute here*\] map textures from
 
 All values are in object space.
 
-Has a toggle for rendering the mesh normally (using vertex position and the MVP matrix) instead of as a UV map for debugging purposes. 
+Has a toggle for rendering the mesh normally (using vertex position * MVP matrix instead of UV as output location). For debugging stuff. 
 
-(That's mostly why UV is included as an input option.)
+(That also the only reason UV is up there as an input option – I'm not sure why anyone would ever need a UV to UV map.)
 
 ## Input Range
 
