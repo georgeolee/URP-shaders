@@ -12,7 +12,7 @@
     }
 
     float sqDist(float2 P, float2 Q){        
-        float3 diff = P - Q;        
+        float2 diff = P - Q;        
         return diff.x*diff.x + diff.y*diff.y;
     }    
 #endif
