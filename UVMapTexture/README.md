@@ -9,16 +9,14 @@ A shader for generating UV to \[*insert mesh attribute here*\] map textures from
 
 All values are in object space.
 
-Has a toggle for rendering the mesh normally (using vertex position * MVP matrix instead of UV as output location). For debugging stuff. 
-
-(That also the only reason UV is up there as an input option – I'm not sure why anyone would ever need a UV to UV map.)
+Has a keyword toggle for rendering the mesh normally (using vertex position * MVP matrix) instead of as a UV map for debugging stuff. 
 
 ## Input Range
 
-The material properties `_min_XYZ` and `_max_XYZ` control determine what values map to 0 and 1 in the shader output.
+The material properties `_min_XYZ` and `_max_XYZ` determine which values map to 0 and 1 respectively in the shader output, with one exception. When mesh UVs are used as the input attribute, values are assumed to be in 0 to 1 range and `_min_XYZ` and `_max_XYZ` are ignored.
 
-When mapping position, `_min_XYZ` and `_max_XYZ` should be set to the min and max extents of the mesh's AABB in object space. In Unity you can get these numbers with `Mesh.bounds.min` and `Mesh.bounds.max`.
+For position, `_min_XYZ` and `_max_XYZ` should be set to the min and max extents of the mesh's AABB in object space (leave W component alone). In Unity you can get these values with `Mesh.bounds.min` and `Mesh.bounds.max`.
 
 For normal/tangent/bitangent `_min_XYZ` and `_max_XYZ` should stay at -1 and 1 unless the input vectors are non-unit length for some reason.
 
-UV mode ignores these values altogether since the input is already in 0 to 1 range.
+
