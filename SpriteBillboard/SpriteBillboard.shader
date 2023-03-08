@@ -207,8 +207,8 @@ Shader "Custom/SpriteBillboard"
                 #ifndef _BILLBOARD_OFF //is _BILLBOARD_CYLINDER or _BILLBOARD_SPHERE                    
                     
                     float4x4 BILLBOARD_MATRIX_MV = GetBillboardMatrix_MV();
-                    float3 positionWS = mul(UNITY_MATRIX_I_V,mul(BILLBOARD_MATRIX_MV, half4(input.positionOS,1)));
-                    half3 normalWS = mul(UNITY_MATRIX_I_V,mul(BILLBOARD_MATRIX_MV, half4(input.normalOS,1)));
+                    float3 positionWS = mul(UNITY_MATRIX_I_V,mul(BILLBOARD_MATRIX_MV, half4(input.positionOS,1))).xyz;
+                    half3 normalWS = mul(UNITY_MATRIX_I_V,mul(BILLBOARD_MATRIX_MV, half4(input.normalOS,1))).xyz;
 
                 #else
                     float3 positionWS = TransformObjectToWorld(input.positionOS.xyz);
