@@ -1,6 +1,6 @@
 # texOutline.hlsl
 
-Defines two macros, `TEX_OUTLINE4` and `TEX_OUTLINE8`, for generating crisp texel outlines around a texture based on an alpha cutoff value.
+Defines two macros, `TEX_OUTLINE4` and `TEX_OUTLINE8`, for generating crisp texel outlines around a texture. Outlines are identified by comparing alpha values between neighboring points.
 
 ```
 half TEX_OUTLINE4(Texture2D tex, half2 uv, half alphaCutoff, half texels)
@@ -8,7 +8,7 @@ half TEX_OUTLINE4(Texture2D tex, half2 uv, half alphaCutoff, half texels)
 
 Output will be `1` if both of the following are true:
 - alpha value of `tex` at `uv` is &lt; `alphaCutoff`
-- alpha value of `tex` at at least one neighboring point  `texels` away is &ge; `alphaCutoff`
+- alpha value of `tex` at one or more neighboring points `texels` away is &ge; `alphaCutoff`
 
 If either is false, output will be `0`.
 
